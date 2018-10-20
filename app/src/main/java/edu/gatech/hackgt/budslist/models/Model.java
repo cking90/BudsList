@@ -1,7 +1,9 @@
 package edu.gatech.hackgt.budslist.models;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Model {
@@ -10,6 +12,8 @@ public class Model {
      * the facade maintains references to any required model classes
      */
     private final Map<String,User> users = new HashMap<>();
+
+    private final List<Request> requests = new ArrayList<>();
 
     /**
      * Singleton pattern
@@ -44,6 +48,10 @@ public class Model {
     }
     public User getUserByEmail(String email) {
         return users.get(email);
+    }
+
+    public void addRequest(User buyer, User seller, Book book) {
+        requests.add(new Request(buyer, seller, book));
     }
 
 
