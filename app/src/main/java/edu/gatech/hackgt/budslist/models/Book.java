@@ -67,4 +67,8 @@ public class Book {
         Book that = (Book) other;
         return this.isbn.equals(that.isbn);
     }
+
+    public String toString() {
+        return name + ": $" + price;
+    }
 }
