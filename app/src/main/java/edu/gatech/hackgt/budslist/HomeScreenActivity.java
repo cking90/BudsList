@@ -19,7 +19,8 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
-
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
     }
 
 
