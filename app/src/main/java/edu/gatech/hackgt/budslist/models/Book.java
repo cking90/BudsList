@@ -9,8 +9,10 @@ public class Book {
     private String edition;
     private String author;
     private String publisher;
+    private Type type;
 
-    public Book(Course course, User seller, String name, int price, String isbn, String edition, String author, String publisher) {
+    public Book(Course course, User seller, String name, int price,
+                String isbn, String edition, String author, String publisher, Type type) {
         this.course = course;
         this.seller = seller;
         this.name = name;
@@ -19,6 +21,7 @@ public class Book {
         this.edition = edition;
         this.author = author;
         this.publisher = publisher;
+        this.type = type;
     }
 
     public Course getCourse() {
@@ -41,6 +44,11 @@ public class Book {
     }
     public String getAuthor() {return this.author; }
     public String getPublisher() {return this.publisher; }
+
+    public Type getType() {
+        return this.type;
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -73,6 +81,7 @@ public class Book {
         return this.isbn.equals(that.isbn);
     }
 }
-  enum Type {
+
+enum Type {
     LOOSE_LEAF, HARD_COVER, PAPER_BACK
 }
