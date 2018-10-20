@@ -28,7 +28,6 @@
         <activity android:name=".ViewRequestsActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".models.CreateListingActivity" />
-        <activity android:name=".CreateListingActivity"></activity>
     </application>
 
 </manifest>
