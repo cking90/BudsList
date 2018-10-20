@@ -11,7 +11,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="149dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="300dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="Make New Sale"
@@ -60,11 +60,13 @@
         app:layout_constraintTop_toBottomOf="@+id/searchForBooksBtn" />
 
     <Button
+        android:id="@+id/myListingsBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="onClickMyListings"
         android:text="My Listings"
         app:layout_constraintEnd_toEndOf="@+id/sellBookBtn"
         app:layout_constraintHorizontal_bias="0.0"

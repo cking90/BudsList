@@ -25,8 +25,9 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".MainPageActivity" />
-        <activity android:name=".ViewRequestsActivity"></activity>
-        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".ViewRequestsActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".MyListingsActivity"></activity>
     </application>
 
 </manifest>
