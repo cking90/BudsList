@@ -53,4 +53,15 @@ public class Book {
     public void setEdition(String edition) {
         this.edition = edition;
     }
+
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof Book)) {
+            return false;
+        }
+        Book that = (Book) other;
+        return this.isbn.equals(that.isbn);
+    }
 }

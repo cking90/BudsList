@@ -29,4 +29,11 @@ public class Course {
         this.name = name;
     }
 
+    public boolean equals(Object other) {
+        if (other == this) {return true; }
+        if (!(other instanceof Course)) { return false; }
+        Course that = (Course) other;
+        return this.department.equals(that.department) && this.courseNumber == that.courseNumber;
+    }
+
 }
