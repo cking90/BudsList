@@ -56,7 +56,7 @@
         app:srcCompat="@drawable/spongebob" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText_name_id"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -92,7 +92,7 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_email_id"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -128,7 +128,7 @@
         app:layout_constraintVertical_bias="0.647" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText_password_id"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -163,7 +163,7 @@
         app:layout_constraintVertical_bias="0.728" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editText_phone_id"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
