@@ -3,10 +3,18 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.gatech.hackgt.budslist.models.Binding;
 import edu.gatech.hackgt.budslist.models.Course;
 import edu.gatech.hackgt.budslist.models.Department;
@@ -50,7 +58,21 @@ public class CreateListingActivity extends AppCompatActivity {
         String name =  "";
         String author = "";
         model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
-
+        List<String> list = new ArrayList<>();
+        String s;
+        try {
+            Process p = Runtime.getRuntime().exec("python isbn.py" + isbn);
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while ((s = stdInput.readLine()) != null) {
+                list.add(s);
+            }
+            name = list.get(0);
+            author = list.get(1);
+            Log.d("title", name);
+            Log.d("author", author);
+        } catch (IOException e) {
+            Log.d("error", e.toString());
+        }
         Intent intent = new Intent(this, MyListingsActivity.class);
         intent.putExtra("user_email", userEmail);
         startActivity(intent);
