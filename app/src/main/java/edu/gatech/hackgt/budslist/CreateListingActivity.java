@@ -9,14 +9,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import edu.gatech.hackgt.budslist.models.Binding;
 import edu.gatech.hackgt.budslist.models.Department;
+import edu.gatech.hackgt.budslist.models.Model;
 
 public class CreateListingActivity extends AppCompatActivity {
+    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing);
-
+        model.getInstance();
         Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
         department.setAdapter(new ArrayAdapter<Department>(this, android.R.layout.simple_spinner_item, Department.values()));
         Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
@@ -37,7 +39,12 @@ public class CreateListingActivity extends AppCompatActivity {
         EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
         String course_num = num_box.getText().toString();
 
+        String email =
+        model.addBook();
+
         Intent intent = new Intent(this, MyListingsActivity.class);
         startActivity(intent);
     }
+
+
 }

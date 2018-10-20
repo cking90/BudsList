@@ -73,7 +73,7 @@ public class Model {
         return null;
     }
 
-    public void addBook(Course course, User seller, String name, int price, String isbn,
+    public void addBook(Course course, User seller, String name, String price, String isbn,
                         String edition, String author, String publisher, Binding type) {
         books.add(new Book(course, seller, name, price, isbn, edition, author, publisher, type));
     }
