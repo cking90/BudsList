@@ -77,6 +77,9 @@ public class Model {
                         String author, Binding type) {
         books.add(new Book(course, seller, name, price, isbn, author, type));
     }
+    public void removeBook(Book book) {
+        books.remove(book);
+    }
 
     public List<Book> getBooksWithSellerEmail(String sellerEmail) {
         List<Book> books = new ArrayList<>();

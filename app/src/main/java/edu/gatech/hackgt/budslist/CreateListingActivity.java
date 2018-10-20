@@ -22,7 +22,7 @@ public class CreateListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_listing);
         Bundle extras = getIntent().getExtras();
         userEmail = extras.getString("user_email");
-        model.getInstance();
+        model = Model.getInstance();
         Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
         department.setAdapter(new ArrayAdapter<Department>(this, android.R.layout.simple_spinner_item, Department.values()));
         Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
