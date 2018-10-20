@@ -19,6 +19,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         model = Model.getInstance();
+        initDefaultData();
     }
 
     public void onClickLogin(View view) {
@@ -33,10 +34,12 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     public void initDefaultData() {
         String[] names = {"Matt", "Saira", "Neha", "Neha"};
+        int number = 1234561234;
         for (String name : names) {
             String email = String.format("%s@gmail.com", name);
             String password = name.toLowerCase();
-//            model.addUser("");
+            String phoneNumber = Integer.toString(number);
+            model.addUser(email, password, name, phoneNumber);
         }
     }
 }
