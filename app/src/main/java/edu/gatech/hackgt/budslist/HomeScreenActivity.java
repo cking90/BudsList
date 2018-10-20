@@ -40,6 +40,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             String password = name.toLowerCase();
             String phoneNumber = Integer.toString(number);
             model.addUser(email, password, name, phoneNumber);
+            number += 23432;
         }
     }
 }
