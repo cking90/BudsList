@@ -194,6 +194,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);
                 Intent intent = new Intent(this, MainPageActivity.class);
+                intent.putExtra("user_email", email);
                 startActivity(intent);
             } else {
                 mPasswordView.setError("This password is incorrect");
