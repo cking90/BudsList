@@ -23,6 +23,12 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickMyListings(View view) {
+        Intent intent = new Intent(this, MyListingsActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
+    }
+
 
 
 }

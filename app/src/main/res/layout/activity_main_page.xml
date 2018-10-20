@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/logoutBtn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="138dp"
+        android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -42,8 +42,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintEnd_toEndOf="@+id/myListingsBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewRequestsBtn"
         app:layout_constraintVertical_bias="1.0" />
