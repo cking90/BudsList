@@ -7,14 +7,18 @@ public class Book {
     private int price;
     private String isbn;
     private String edition;
+    private String author;
+    private String publisher;
 
-    public Book(Course course, User seller, String name, int price, String isbn, String edition) {
+    public Book(Course course, User seller, String name, int price, String isbn, String edition, String author, String publisher) {
         this.course = course;
         this.seller = seller;
         this.name = name;
         this.price = price;
         this.isbn = isbn;
         this.edition = edition;
+        this.author = author;
+        this.publisher = publisher;
     }
 
     public Course getCourse() {
@@ -35,6 +39,8 @@ public class Book {
     public String getEdition() {
         return this.edition;
     }
+    public String getAuthor() {return this.author; }
+    public String getPublisher() {return this.publisher; }
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -53,6 +59,8 @@ public class Book {
     public void setEdition(String edition) {
         this.edition = edition;
     }
+    public void setAuthor(String author) { this.author = author; }
+    public void setPublisher(String publisher) { this.publisher = publisher; }
 
     public boolean equals(Object other) {
         if (other == this) {
@@ -64,4 +72,7 @@ public class Book {
         Book that = (Book) other;
         return this.isbn.equals(that.isbn);
     }
+}
+  enum Type {
+    LOOSE_LEAF, HARD_COVER, PAPER_BACK
 }
