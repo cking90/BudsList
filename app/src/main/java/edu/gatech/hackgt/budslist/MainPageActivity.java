@@ -1,7 +1,9 @@
 package edu.gatech.hackgt.budslist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -10,4 +12,12 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
     }
+
+    public void onClickSellBook(View view) {
+        Intent intent = new Intent(this, CreateListingActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }
