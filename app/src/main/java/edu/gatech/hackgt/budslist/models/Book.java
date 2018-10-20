@@ -1,14 +1,14 @@
-package edu.gatech.hackgt.budslist;
+package edu.gatech.hackgt.budslist.models;
 
-public class Books {
-    private Courses course;
+public class Book {
+    private Course course;
     private User seller;
     private String name;
     private int price;
     private String isbn;
     private String edition;
 
-    public Books(Courses course, User seller, String name, int price, String isbn, String edition) {
+    public Book(Course course, User seller, String name, int price, String isbn, String edition) {
         this.course = course;
         this.seller = seller;
         this.name = name;
@@ -17,7 +17,7 @@ public class Books {
         this.edition = edition;
     }
 
-    public Courses getCourse() {
+    public Course getCourse() {
         return this.course;
     }
     public User getSeller() {
@@ -35,7 +35,7 @@ public class Books {
     public String getEdition() {
         return this.edition;
     }
-    public void setCourse(Courses course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
     public void setSeller(User seller) {

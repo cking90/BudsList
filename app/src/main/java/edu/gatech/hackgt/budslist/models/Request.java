@@ -1,13 +1,15 @@
-package edu.gatech.hackgt.budslist;
+package edu.gatech.hackgt.budslist.models;
 
 import java.time.LocalDate;
 
-public class Requests {
+import edu.gatech.hackgt.budslist.models.User;
+
+public class Request {
     private User seller;
     private User buyer;
     private LocalDate date;
 
-    public Requests(User seller, User buyer, LocalDate date) {
+    public Request(User seller, User buyer, LocalDate date) {
         this.seller = seller;
         this.buyer = buyer;
         this.date = LocalDate.now();

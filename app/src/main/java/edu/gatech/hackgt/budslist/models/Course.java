@@ -1,16 +1,16 @@
-package edu.gatech.hackgt.budslist;
+package edu.gatech.hackgt.budslist.models;
 
-public class Courses {
-    private Departments department;
+public class Course {
+    private Department department;
     private int courseNumber;
     private String name;
 
-    public Courses(Departments department, int courseNumber, String name) {
+    public Course(Department department, int courseNumber, String name) {
         this.department = department;
         this.courseNumber = courseNumber;
         this.name = name;
     }
-    public Departments getDepartment() {
+    public Department getDepartment() {
         return this.department;
     }
     public int getCourseNumber() {
@@ -19,7 +19,7 @@ public class Courses {
     public String getName() {
         return this.name;
     }
-    public void setDepartment(Departments department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
     public void setCourseNumber(int courseNumber) {

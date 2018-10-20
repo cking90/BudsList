@@ -1,4 +1,4 @@
-package edu.gatech.hackgt.budslist;
+package edu.gatech.hackgt.budslist.models;
 
 public class User {
     private String email;
