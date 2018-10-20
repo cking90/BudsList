@@ -22,7 +22,21 @@
         app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.827" />
+
+    <Button
+        android:id="@+id/onClickMainPage"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="156dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="onClickMainPage"
+        android:text="Main Page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myListingsTextView"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/myListingsTextView" />
 
     <Spinner
         android:id="@+id/myListingsSpinner"
@@ -58,7 +72,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/deleteListingBtn"
+        android:id="@+id/deleteBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="156dp"
         android:layout_height="43dp"
@@ -71,9 +85,9 @@
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.827" />
 
 </android.support.constraint.ConstraintLayout>
