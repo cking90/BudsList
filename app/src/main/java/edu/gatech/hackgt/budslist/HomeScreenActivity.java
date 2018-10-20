@@ -8,8 +8,14 @@ import android.view.View;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
+import edu.gatech.hackgt.budslist.models.Binding;
+import edu.gatech.hackgt.budslist.models.Course;
+import edu.gatech.hackgt.budslist.models.Department;
 import edu.gatech.hackgt.budslist.models.Model;
+import edu.gatech.hackgt.budslist.models.User;
 
 public class HomeScreenActivity extends AppCompatActivity {
 
@@ -42,5 +48,16 @@ public class HomeScreenActivity extends AppCompatActivity {
             model.addUser(email, password, name, phoneNumber);
             number += 23432;
         }
+
+        Course[] courses = {new Course(Department.AE, Integer.toString(1000)),
+                            new Course(Department.CS, Integer.toString(1301)),
+                            new Course(Department.CS, Integer.toString(1332))};
+        Map<String,User> userList = model.getUsers();
+        model.addBook(courses[0], userList.get("neha@gmail.com"), "Planes are fun",
+                "13.00", "ASBN3", "Billy Planesworth", Binding.HARD_COVER);
+        model.addBook(courses[1], userList.get("neha@gmail.com"), "Intro to Computing",
+                "65.00", "ASE23F", "Dr. McDaniel", Binding.HARD_COVER);
+        model.addBook(courses[2], userList.get("neha@gmail.com"), "Intro to Data Structures",
+                "80.00", "FGF3N3", "HB", Binding.PAPER_BACK);
     }
 }
