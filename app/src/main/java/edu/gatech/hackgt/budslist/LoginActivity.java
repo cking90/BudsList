@@ -33,6 +33,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gatech.hackgt.budslist.models.Model;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
+        model = Model.getInstance();
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -185,22 +189,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-            Intent intent = new Intent(this, MainPageActivity.class);
-            startActivity(intent);
+            if (doLogin(email, password)) {
+                showProgress(true);
+                mAuthTask = new UserLoginTask(email, password);
+                mAuthTask.execute((Void) null);
+                Intent intent = new Intent(this, MainPageActivity.class);
+                startActivity(intent);
+            } else {
+                mPasswordView.setError("This password is incorrect");
+            }
+
         }
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return model.getUsers().containsKey(email);
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+
+    private boolean doLogin(String email, String password) {
+        if (model.getUsers().containsKey(email)) {
+            return model.getUsers().get(email).getPassword().equals(password);
+        }
+        return false;
     }
 
     /**
