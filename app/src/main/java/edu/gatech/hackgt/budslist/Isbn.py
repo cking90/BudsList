@@ -1,13 +1,10 @@
 import requests
 import sys
-from bs4 import BeautifulSoup
 import re
 
 url = f"https://isbndb.com/book/{sys.argv[1]}"
-# print("url made")
+
 resp = requests.get(url)
-# print("request made")
-# soup = BeautifulSoup(resp.text, "html.parser")
 
 start = re.search("<table", resp.text).start()
 end = re.search("</table>", resp.text).end()
