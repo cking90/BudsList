@@ -4,13 +4,13 @@ public class Book {
     private Course course;
     private User seller;
     private String name;
-    private int price;
+    private String price;
     private String isbn;
     private String edition;
     private String author;
     private String publisher;
 
-    public Book(Course course, User seller, String name, int price, String isbn, String edition, String author, String publisher) {
+    public Book(Course course, User seller, String name, String price, String isbn, String edition, String author, String publisher) {
         this.course = course;
         this.seller = seller;
         this.name = name;
@@ -30,7 +30,7 @@ public class Book {
     public String getName() {
         return this.name;
     }
-    public int getPrice() {
+    public String getPrice() {
         return this.price;
     }
     public String getIsbn() {
@@ -50,7 +50,7 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
     public void setIsbn(String isbn) {
