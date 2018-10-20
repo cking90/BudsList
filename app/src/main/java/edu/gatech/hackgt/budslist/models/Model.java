@@ -74,7 +74,7 @@ public class Model {
     }
 
     public void addBook(Course course, User seller, String name, int price, String isbn,
-                        String edition, String author, String publisher, Type type) {
+                        String edition, String author, String publisher, Binding type) {
         books.add(new Book(course, seller, name, price, isbn, edition, author, publisher, type));
     }
 
