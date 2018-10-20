@@ -20,6 +20,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void onClickSellBook(View view) {
         Intent intent = new Intent(this, CreateListingActivity.class);
+        intent.putExtra("user_email", userEmail);
         startActivity(intent);
     }
 

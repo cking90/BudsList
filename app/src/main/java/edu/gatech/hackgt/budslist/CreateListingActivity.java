@@ -8,16 +8,20 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import edu.gatech.hackgt.budslist.models.Binding;
+import edu.gatech.hackgt.budslist.models.Course;
 import edu.gatech.hackgt.budslist.models.Department;
 import edu.gatech.hackgt.budslist.models.Model;
+import edu.gatech.hackgt.budslist.models.User;
 
 public class CreateListingActivity extends AppCompatActivity {
     Model model;
-
+    String userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_listing);
+        Bundle extras = getIntent().getExtras();
+        userEmail = extras.getString("user_email");
         model.getInstance();
         Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
         department.setAdapter(new ArrayAdapter<Department>(this, android.R.layout.simple_spinner_item, Department.values()));
@@ -32,17 +36,23 @@ public class CreateListingActivity extends AppCompatActivity {
         String price = price_box.getText().toString();
 
         Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
-        String selected_binding = binding.getSelectedItem().toString();
+        Binding selected_binding = (Binding)binding.getSelectedItem();
         Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
-        String selected_department = department.getSelectedItem().toString();
+        Department selected_department = (Department)department.getSelectedItem();
 
         EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
         String course_num = num_box.getText().toString();
 
-        String email =
-        model.addBook();
+        String email = userEmail;
+        User user = model.getUserByEmail(userEmail);
+
+        //TODO - get name and author
+        String name =  "";
+        String author = "";
+        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
 
         Intent intent = new Intent(this, MyListingsActivity.class);
+        intent.putExtra("user_email", userEmail);
         startActivity(intent);
     }
 
