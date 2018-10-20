@@ -36,4 +36,10 @@ public class User {
     public void setPhone_number(long phone_number) {
         this.phone_number = phone_number;
     }
+
+    public boolean equals(Object other) {
+        if (this == other) { return true; }
+        if (!(other instanceof User)) {return false; }
+        return (((User) other).email.equals(this.email));
+    }
 }
