@@ -213,7 +213,7 @@
         app:layout_constraintVertical_bias="0.482" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_make_listing_id"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -222,6 +222,7 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="casual"
+        android:onClick="onClickMakeListing"
         android:text="Make Listing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
