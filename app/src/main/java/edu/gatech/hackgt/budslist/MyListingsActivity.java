@@ -45,12 +45,18 @@ public class MyListingsActivity extends AppCompatActivity {
         Spinner book = (Spinner)findViewById(R.id.myListingsSpinner);
         Book selected_book = (Book)book.getSelectedItem();
 
-        model.getBooksWithSellerEmail(userEmail).remove(selected_book);
+        model.removeBook(selected_book);
         Intent intent = new Intent(this, MyListingsActivity.class);
         intent.putExtra("user_email", userEmail);
         startActivity(intent);
 
 
+    }
+
+    public void onClickMainPage(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
     }
 
 }
