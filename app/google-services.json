@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "834288707206",
+    "firebase_url": "https://hackgt5-budslist.firebaseio.com",
+    "project_id": "hackgt5-budslist",
+    "storage_bucket": "hackgt5-budslist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834288707206:android:0cf62f8dcfe0ac62",
+        "android_client_info": {
+          "package_name": "edu.gatech.hackgt.budslist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834288707206-ri9k5okum2icrps519osrptj9ispmrfa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.hackgt.budslist",
+            "certificate_hash": "57601e157eddadc4dea35f9fbd76ebd9f590a3e8"
+          }
+        },
+        {
+          "client_id": "834288707206-bbidssti6729rom3k8ahaprj4js87qcm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjvtqE7-rgHQalMC5jPw8wBb4sDKF7mI0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834288707206-bbidssti6729rom3k8ahaprj4js87qcm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

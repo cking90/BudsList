@@ -32,4 +32,12 @@ public class Request {
     public void setBuyer(User buyer) {
         this.buyer = buyer;
     }
+
+    public boolean equals(Object other) {
+        if (this == other) { return true; }
+        if (!(other instanceof Request)) { return false; }
+        return (((Request) other).seller.equals(this.seller)
+                && ((Request) other).buyer.equals(this.buyer)
+                && ((Request) other).book.equals(this.book));
+    }
 }
