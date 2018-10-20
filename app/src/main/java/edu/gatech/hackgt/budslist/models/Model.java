@@ -43,13 +43,8 @@ public class Model {
         um.addUser(email, password, name, phone_number);
 
     }
-
-    void addUser(User user) {
-        um.addUser(user);
-    }
-
-    void removeUser(User user) {
-        um.removeUser(user);
+    void removeUser(String name) {
+        um.removeUser(name);
     }
 
 

@@ -13,12 +13,8 @@ public class UserManager {
         users.put(email, user);
     }
 
-    void addUser(User user) {
-        users.put(user.getName(), user);
-    }
-
-    void removeUser(User user) {
-        users.remove(user.getName());
+    void removeUser(String email) {
+        users.remove(email);
     }
 
 
