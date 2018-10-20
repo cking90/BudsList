@@ -63,5 +63,4 @@ public class CreateListingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
 }
