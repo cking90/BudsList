@@ -4,9 +4,9 @@ public class User {
     private String email;
     private String password;
     private String name;
-    private long phone_number;
+    private String phone_number;
 
-    public User(String email, String password, String name, long phone_number) {
+    public User(String email, String password, String name, String phone_number) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -21,7 +21,7 @@ public class User {
     public String getName() {
         return this.name;
     }
-    public long getPhone_number() {
+    public String getPhone_number() {
         return this.phone_number;
     }
     public void setEmail(String email) {
@@ -33,7 +33,13 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public void setPhone_number(long phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public boolean equals(Object other) {
+        if (this == other) { return true; }
+        if (!(other instanceof User)) {return false; }
+        return (((User) other).email.equals(this.email));
     }
 }
