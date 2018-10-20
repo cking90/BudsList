@@ -35,8 +35,8 @@ public class Model {
         return um.getUsers();
     }
 
-    public User getUserByName(final String name) {
-        return um.getUserByName(name);
+    public User getUserByEmail(final String name) {
+        return um.getUserByEmail(name);
     }
 
     public void addNewUser(String email, String password, String name, long phone_number) {

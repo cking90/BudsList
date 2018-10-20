@@ -23,8 +23,8 @@ public class UserManager {
     }
 
 
-    public User getUserByName(String name) {
-        return users.get(name);
+    public User getUserByEmail(String email) {
+        return users.get(email);
     }
 
 }
