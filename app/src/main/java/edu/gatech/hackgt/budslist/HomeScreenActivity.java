@@ -36,7 +36,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         String[] names = {"Matt", "Saira", "Neha", "Neha"};
         int number = 1234561234;
         for (String name : names) {
-            String email = String.format("%s@gmail.com", name);
+            String email = String.format("%s@gmail.com", name.toLowerCase());
             String password = name.toLowerCase();
             String phoneNumber = Integer.toString(number);
             model.addUser(email, password, name, phoneNumber);
