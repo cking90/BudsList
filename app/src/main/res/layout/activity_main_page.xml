@@ -14,6 +14,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="300dp"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="onClickSellBook"
         android:text="Make New Sale"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

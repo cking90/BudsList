@@ -18,9 +18,11 @@ public class MainPageActivity extends AppCompatActivity {
         userEmail = extras.getString("user_email");
     }
 
-    public void onClickMyListings(View view) {
-        Intent intent = new Intent(this, MyListingsActivity.class);
-        intent.putExtra("user_email", userEmail);
+    public void onClickSellBook(View view) {
+        Intent intent = new Intent(this, CreateListingActivity.class);
         startActivity(intent);
     }
+
+
+
 }
