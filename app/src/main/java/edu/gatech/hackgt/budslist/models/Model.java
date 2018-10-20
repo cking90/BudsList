@@ -74,8 +74,8 @@ public class Model {
     }
 
     public void addBook(Course course, User seller, String name, String price, String isbn,
-                        String edition, String author, String publisher, Binding type) {
-        books.add(new Book(course, seller, name, price, isbn, edition, author, publisher, type));
+                        String author, Binding type) {
+        books.add(new Book(course, seller, name, price, isbn, author, type));
     }
 
     public List<Book> getBooksWithSellerEmail(String sellerEmail) {

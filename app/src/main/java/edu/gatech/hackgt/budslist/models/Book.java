@@ -6,21 +6,17 @@ public class Book {
     private String name;
     private String price;
     private String isbn;
-    private String edition;
     private String author;
-    private String publisher;
     private Binding type;
 
     public Book(Course course, User seller, String name, String price,
-                String isbn, String edition, String author, String publisher, Binding type) {
+                String isbn, String author, Binding type) {
         this.course = course;
         this.seller = seller;
         this.name = name;
         this.price = price;
         this.isbn = isbn;
-        this.edition = edition;
         this.author = author;
-        this.publisher = publisher;
         this.type = type;
     }
 
@@ -39,16 +35,10 @@ public class Book {
     public String getIsbn() {
         return this.isbn;
     }
-    public String getEdition() {
-        return this.edition;
-    }
     public String getAuthor() {return this.author; }
-    public String getPublisher() {return this.publisher; }
-
     public Binding getType() {
         return this.type;
     }
-
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -64,11 +54,8 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    public void setEdition(String edition) {
-        this.edition = edition;
-    }
     public void setAuthor(String author) { this.author = author; }
-    public void setPublisher(String publisher) { this.publisher = publisher; }
+
 
     public boolean equals(Object other) {
         if (other == this) {
