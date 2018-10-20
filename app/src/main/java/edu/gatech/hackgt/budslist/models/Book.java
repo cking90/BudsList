@@ -81,7 +81,3 @@ public class Book {
         return this.isbn.equals(that.isbn);
     }
 }
-
-enum Binding {
-    LOOSE_LEAF, HARD_COVER, PAPER_BACK
-}
