@@ -1,6 +1,7 @@
 package edu.gatech.hackgt.budslist.models;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Model {
@@ -8,7 +9,7 @@ public class Model {
     /**
      * the facade maintains references to any required model classes
      */
-    private UserManager um;
+    private final Map<String,User> users = new HashMap<>();
 
     /**
      * Singleton pattern
@@ -20,7 +21,7 @@ public class Model {
      * private constructor for facade pattern
      */
     private Model() {
-        um = new UserManager();
+
     }
 
     /**
@@ -31,21 +32,20 @@ public class Model {
      */
     public static Model getInstance() { return instance; }
 
-    public Map<String,User> getStudentsAsMap() {
-        return um.getUsers();
+    public void addUser(String email, String password, String name, long phone_number) {
+        User user = new User(email, password, name, phone_number);
+        users.put(email, user);
+    }
+    public void removeUser(String email) {
+        users.remove(email);
+    }
+    public Map<String, User> getUsers() {
+        return users;
+    }
+    public User getUserByEmail(String email) {
+        return users.get(email);
     }
 
-    public User getUserByEmail(final String name) {
-        return um.getUserByEmail(name);
-    }
-
-    public void addNewUser(String email, String password, String name, long phone_number) {
-        um.addUser(email, password, name, phone_number);
-
-    }
-    void removeUser(String name) {
-        um.removeUser(name);
-    }
 
 
 
