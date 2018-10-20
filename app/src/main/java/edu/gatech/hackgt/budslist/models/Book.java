@@ -9,10 +9,10 @@ public class Book {
     private String edition;
     private String author;
     private String publisher;
-    private Type type;
+    private Binding type;
 
     public Book(Course course, User seller, String name, int price,
-                String isbn, String edition, String author, String publisher, Type type) {
+                String isbn, String edition, String author, String publisher, Binding type) {
         this.course = course;
         this.seller = seller;
         this.name = name;
@@ -45,7 +45,7 @@ public class Book {
     public String getAuthor() {return this.author; }
     public String getPublisher() {return this.publisher; }
 
-    public Type getType() {
+    public Binding getType() {
         return this.type;
     }
 
@@ -82,6 +82,6 @@ public class Book {
     }
 }
 
-enum Type {
+enum Binding {
     LOOSE_LEAF, HARD_COVER, PAPER_BACK
 }
