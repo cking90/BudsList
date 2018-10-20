@@ -3,7 +3,13 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import java.io.File;
+import java.time.LocalDate;
+
+import edu.gatech.hackgt.budslist.models.Model;
 
 public class HomeScreenActivity extends AppCompatActivity {
 
@@ -19,8 +25,8 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
-//        Intent intent = new Intent(this, RegistrationActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
     }
 
 

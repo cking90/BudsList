@@ -26,6 +26,7 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".MainPageActivity" />
         <activity android:name=".ViewRequestsActivity"></activity>
+        <activity android:name=".RegistrationActivity"></activity>
     </application>
 
 </manifest>
