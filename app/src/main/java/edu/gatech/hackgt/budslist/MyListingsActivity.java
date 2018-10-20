@@ -53,4 +53,10 @@ public class MyListingsActivity extends AppCompatActivity {
 
     }
 
+    public void onClickMainPage(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
+    }
+
 }
