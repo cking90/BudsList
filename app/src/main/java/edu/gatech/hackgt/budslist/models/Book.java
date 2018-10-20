@@ -4,13 +4,15 @@ public class Book {
     private Course course;
     private User seller;
     private String name;
-    private String price;
+    private int price;
     private String isbn;
     private String edition;
     private String author;
     private String publisher;
+    private Binding type;
 
-    public Book(Course course, User seller, String name, String price, String isbn, String edition, String author, String publisher) {
+    public Book(Course course, User seller, String name, int price,
+                String isbn, String edition, String author, String publisher, Binding type) {
         this.course = course;
         this.seller = seller;
         this.name = name;
@@ -19,6 +21,7 @@ public class Book {
         this.edition = edition;
         this.author = author;
         this.publisher = publisher;
+        this.type = type;
     }
 
     public Course getCourse() {
@@ -30,7 +33,7 @@ public class Book {
     public String getName() {
         return this.name;
     }
-    public String getPrice() {
+    public int getPrice() {
         return this.price;
     }
     public String getIsbn() {
@@ -41,6 +44,11 @@ public class Book {
     }
     public String getAuthor() {return this.author; }
     public String getPublisher() {return this.publisher; }
+
+    public Binding getType() {
+        return this.type;
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -50,7 +58,7 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     public void setIsbn(String isbn) {
@@ -73,6 +81,7 @@ public class Book {
         return this.isbn.equals(that.isbn);
     }
 }
-  enum Type {
+
+enum Binding {
     LOOSE_LEAF, HARD_COVER, PAPER_BACK
 }

@@ -3,11 +3,11 @@ package edu.gatech.hackgt.budslist;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ViewRequestsActivity extends AppCompatActivity {
+public class ViewListingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_requests);
+        setContentView(R.layout.activity_view_listing);
     }
 }
