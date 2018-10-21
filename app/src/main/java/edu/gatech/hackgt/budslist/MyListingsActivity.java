@@ -40,8 +40,6 @@ public class MyListingsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         userEmail = extras.getString("user_email");
 
-        List<Book> listings = model.getBooksWithSellerEmail(userEmail);
-
         Spinner book = (Spinner)findViewById(R.id.myListingsSpinner);
         Book selected_book = (Book)book.getSelectedItem();
 
@@ -56,6 +54,17 @@ public class MyListingsActivity extends AppCompatActivity {
     public void onClickMainPage(View view) {
         Intent intent = new Intent(this, MainPageActivity.class);
         intent.putExtra("user_email", userEmail);
+        startActivity(intent);
+    }
+
+    public void onClickViewDetails(View view) {
+        Intent intent = new Intent(this, ViewListingActivity.class);
+
+        Book book = (Book) ((Spinner)findViewById(R.id.myListingsSpinner)).getSelectedItem();
+
+        intent.putExtra("seller_email", book.getSeller().getEmail());
+        intent.putExtra("book_price", book.getPrice());
+        intent.putExtra("book_isbn", book.getIsbn());
         startActivity(intent);
     }
 
