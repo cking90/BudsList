@@ -3,7 +3,6 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,20 +39,13 @@ public class MakeRequestActivity extends AppCompatActivity {
 
         model = Model.getInstance();
 
-        for (Book b : model.getBooks()) {
-            Log.d("sad", b.getAuthor());
-        }
 
-        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
+
 
         userEmail = model.getCurrentUser();
-        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
 
         book = model.getBookWith_seller_price_isbn(sellerEmail, bookPrice, bookISBN);
-        Log.d("please",Boolean.toString(book == null));
-        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
         User seller = model.getUserByEmail(sellerEmail);
-        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
 
         textView_title = findViewById(R.id.textView_title);
         textView_isbn = findViewById(R.id.textView_isbn);
