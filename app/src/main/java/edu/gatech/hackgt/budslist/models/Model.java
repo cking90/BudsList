@@ -74,13 +74,24 @@ public class Model {
     public void removeRequest(Request request) {
         requests.remove(request);
     }
-    public Request getRequest(Book book, String buyerEmail) {
+    public List<Request> getRequestsForBuyer(String buyerEmail) {
+        List<Request> requests = new ArrayList<>();
         for (Request r : requests) {
-            if (r.getBook().equals(book) && r.getBuyer().equals(buyerEmail)) {
-                return r;
+            if (r.getBuyer().equals(buyerEmail)) {
+                requests.add(r);
             }
         }
-        return null;
+        return requests;
+    }
+
+    public List<Request> getRequestsForSeller(String sellerEmail) {
+        List<Request> requests = new ArrayList<>();
+        for (Request r : requests) {
+            if (r.getBook().getSeller().equals(sellerEmail)) {
+                requests.add(r);
+            }
+        }
+        return requests;
     }
 
     public void addBook(Course course, User seller, String name, String price, String isbn,
