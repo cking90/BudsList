@@ -48,7 +48,7 @@ public class BookRecyclerViewAdapter extends
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         holder.bookName.setText(bookNames.get(position));
-        holder.bookPrice.setText("$" + bookPrices.get(position));
+        holder.bookPrice.setText(bookPrices.get(position));
         holder.bookAuthor.setText(bookAuthors.get(position));
         holder.bookSeller.setText(bookSellers.get(position));
         holder.bookIsbn.setText(bookISBNs.get(position));

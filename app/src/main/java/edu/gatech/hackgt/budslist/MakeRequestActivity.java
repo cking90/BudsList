@@ -3,8 +3,13 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import edu.gatech.hackgt.budslist.models.Book;
+import edu.gatech.hackgt.budslist.models.Model;
+import edu.gatech.hackgt.budslist.models.User;
 
 public class MakeRequestActivity extends AppCompatActivity {
 
@@ -16,16 +21,34 @@ public class MakeRequestActivity extends AppCompatActivity {
     TextView textView_course;
     TextView textView_seller;
 
-
+    String sellerEmail;
+    String bookPrice;
+    String bookISBN;
     String userEmail;
+    Book book;
+
+    Model model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_request);
 
         Bundle extras = getIntent().getExtras();
-        userEmail = extras.getString("user_email");
 
+        model = Model.getInstance();
+
+        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
+
+        userEmail = model.getCurrentUser();
+        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
+        sellerEmail = extras.getString("seller_email");
+        bookPrice = extras.getString("book_price");
+        bookISBN = extras.getString("book_isbn");
+        book = model.getBookWith_seller_price_isbn(sellerEmail, bookPrice, bookISBN);
+        Log.d("please",Boolean.toString(book == null));
+        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
+        User seller = model.getUserByEmail(sellerEmail);
+        Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
 
         textView_title = findViewById(R.id.textView_title);
         textView_isbn = findViewById(R.id.textView_isbn);
@@ -34,6 +57,14 @@ public class MakeRequestActivity extends AppCompatActivity {
         textView_binding = findViewById(R.id.textView_binding);
         textView_course = findViewById(R.id.textView_course);
         textView_seller = findViewById(R.id.textView_seller);
+
+        textView_title.setText(book.getName());
+        textView_isbn.setText(book.getIsbn());
+        textView_price.setText(book.getPrice());
+        textView_author.setText(book.getAuthor());
+        textView_binding.setText(book.getType().toString());
+        textView_course.setText(book.getCourse().toString());
+        textView_seller.setText(seller.toString());
     }
 
     public void onClickBack(View view) {
