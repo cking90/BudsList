@@ -21,15 +21,17 @@ public class BookRecyclerViewAdapter extends
     private ArrayList<String> bookAuthors = new ArrayList<>();
     private ArrayList<String> bookPrices = new ArrayList<>();
     private ArrayList<String> bookSellers = new ArrayList<>();
+    private ArrayList<String> bookISBN = new ArrayList<>();
     private Context mContext;
 
     public BookRecyclerViewAdapter(ArrayList<String> bookNames, ArrayList<String> bookPrices,
                                         ArrayList<String> bookAuthors, ArrayList<String> bookSellers,
-                                        Context context) {
+                                        ArrayList<String> isbns, Context context) {
         this.bookAuthors = bookAuthors;
         this.bookNames = bookNames;
         this.bookSellers = bookSellers;
         this.bookPrices = bookPrices;
+        this.bookISBN = isbns;
         this.mContext = context;
     }
 
@@ -46,7 +48,7 @@ public class BookRecyclerViewAdapter extends
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         holder.bookName.setText(bookNames.get(position));
-        holder.bookPrice.setText(bookPrices.get(position));
+        holder.bookPrice.setText("$" + bookPrices.get(position));
         holder.bookAuthor.setText(bookAuthors.get(position));
         holder.bookSeller.setText(bookSellers.get(position));
 
