@@ -91,6 +91,10 @@ public class Model {
         return books;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
 
     public static void initDefaultData() {
 

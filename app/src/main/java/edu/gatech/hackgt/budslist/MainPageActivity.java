@@ -30,6 +30,12 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickSearchBooks(View view) {
+        Intent intent = new Intent(this, SearchForBooksActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
+    }
+
 
 
 }
