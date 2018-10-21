@@ -3,7 +3,6 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -30,8 +29,6 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
         userEmail = extras.getString("user_email");
         model = Model.getInstance();
 
-        Log.d("pleasecoco", userEmail);
-        Log.d("pleasee", model.getRequests().get(0).getBuyer());
         outgoing = (Spinner)findViewById(R.id.spinner_outgoing);
         outgoing.setAdapter(new ArrayAdapter<Request>(this, android.R.layout.simple_spinner_item, model.getRequestsForBuyer(userEmail)));
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -46,22 +45,17 @@ public class SearchForBooksActivity extends AppCompatActivity {
             bookIsbns.add(book.getIsbn());
         }
         initRecyclerView();
-        Log.d("initRecyclerView", "initRecycler: initialization complete");
     }
 
     private void initRecyclerView() {
-        Log.d("initRecyclerView", "initRecycler: started");
         RecyclerView recyclerView = findViewById(R.id.bookRecyclerView);
         BookRecyclerViewAdapter adapter = new BookRecyclerViewAdapter(bookNames,
                 bookPrices, bookAuthors, bookSellers, bookIsbns, this);
-        Log.d("initRecyclerView", "initRecycler: adapter instantiated");
         recyclerView.setAdapter(adapter);
-        Log.d("initRecyclerView", "initRecycler: adapter Set");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        Log.d("initRecyclerView", "initRecycler: layout Set");
     }
 
 }

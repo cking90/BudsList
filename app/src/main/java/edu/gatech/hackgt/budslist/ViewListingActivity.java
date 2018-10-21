@@ -3,7 +3,6 @@ package edu.gatech.hackgt.budslist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,7 +37,6 @@ public class ViewListingActivity extends AppCompatActivity {
 
         model = Model.getInstance();
         book = model.getBookWith_seller_price_isbn(userEmail, bookPrice, bookISBN);
-        Log.d("HALS", userEmail + bookPrice + bookISBN);
         bookTitleTextView = findViewById(R.id.textView_bookTitle_id);
         isbnTextView = findViewById(R.id.textView_isbnReplace_id);
         priceTextView = findViewById(R.id.textView_priceReplace_id);
