@@ -21,7 +21,7 @@ public class BookRecyclerViewAdapter extends
     private ArrayList<String> bookAuthors = new ArrayList<>();
     private ArrayList<String> bookPrices = new ArrayList<>();
     private ArrayList<String> bookSellers = new ArrayList<>();
-    private ArrayList<String> bookISBN = new ArrayList<>();
+    private ArrayList<String> bookISBNs = new ArrayList<>();
     private Context mContext;
 
     public BookRecyclerViewAdapter(ArrayList<String> bookNames, ArrayList<String> bookPrices,
@@ -31,7 +31,7 @@ public class BookRecyclerViewAdapter extends
         this.bookNames = bookNames;
         this.bookSellers = bookSellers;
         this.bookPrices = bookPrices;
-        this.bookISBN = isbns;
+        this.bookISBNs = isbns;
         this.mContext = context;
     }
 
@@ -51,6 +51,7 @@ public class BookRecyclerViewAdapter extends
         holder.bookPrice.setText("$" + bookPrices.get(position));
         holder.bookAuthor.setText(bookAuthors.get(position));
         holder.bookSeller.setText(bookSellers.get(position));
+        holder.bookIsbn.setText(bookISBNs.get(position));
 
     }
 
@@ -65,6 +66,7 @@ public class BookRecyclerViewAdapter extends
         TextView bookPrice;
         TextView bookSeller;
         TextView bookAuthor;
+        TextView bookIsbn;
         RelativeLayout parentLayout;
 
         /**
@@ -78,6 +80,7 @@ public class BookRecyclerViewAdapter extends
             bookPrice = itemView.findViewById(R.id.bookPriceTextView);
             bookSeller = itemView.findViewById(R.id.bookSellerTextView);
             bookAuthor = itemView.findViewById(R.id.bookAuthorTextView);
+            bookIsbn = itemView.findViewById(R.id.bookISBNTextView);
             parentLayout = itemView.findViewById(R.id.bookAdapterLayout);
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override

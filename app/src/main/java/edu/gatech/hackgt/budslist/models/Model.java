@@ -91,6 +91,16 @@ public class Model {
         return books;
     }
 
+    public Book getBookWith_seller_price_isbn(String sellerEmail, String price, String isbn) {
+        for (Book b : books) {
+            if (b.getSeller().getEmail().equals(sellerEmail)
+                    && price.equals(b.getPrice()) && isbn.equals(b.getIsbn())) {
+                return b;
+            }
+        }
+        return null;
+    }
+
     public List<Book> getBooks() {
         return books;
     }

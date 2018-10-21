@@ -28,4 +28,8 @@ public class Course {
         return this.department.equals(that.department) && this.courseNumber.equals(that.courseNumber);
     }
 
+    public String toString() {
+        return "" + department + courseNumber;
+    }
+
 }
