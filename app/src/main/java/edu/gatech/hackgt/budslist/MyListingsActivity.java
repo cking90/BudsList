@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +59,20 @@ public class MyListingsActivity extends AppCompatActivity {
     }
 
     public void onClickViewDetails(View view) {
-        Intent intent = new Intent(this, ViewListingActivity.class);
+        Book book = (Book) ((Spinner) findViewById(R.id.myListingsSpinner)).getSelectedItem();
+        if (book == null) {
+            Toast.makeText(this, "Cannot view details if a book is not selected.",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(this, ViewListingActivity.class);
 
-        Book book = (Book) ((Spinner)findViewById(R.id.myListingsSpinner)).getSelectedItem();
 
-        intent.putExtra("seller_email", book.getSeller().getEmail());
-        intent.putExtra("book_price", book.getPrice());
-        intent.putExtra("book_isbn", book.getIsbn());
-        startActivity(intent);
+
+            intent.putExtra("seller_email", book.getSeller().getEmail());
+            intent.putExtra("book_price", book.getPrice());
+            intent.putExtra("book_isbn", book.getIsbn());
+            startActivity(intent);
+        }
     }
 
 }

@@ -17,7 +17,10 @@ public class MainPageActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         userEmail = extras.getString("user_email");
     }
-
+    public void onClickLogout(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
     public void onClickSellBook(View view) {
         Intent intent = new Intent(this, CreateListingActivity.class);
         intent.putExtra("user_email", userEmail);
