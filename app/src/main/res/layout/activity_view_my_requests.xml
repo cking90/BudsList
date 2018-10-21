@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView_myReqs"
-        android:layout_width="97dp"
-        android:layout_height="42dp"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -17,6 +17,7 @@
         android:fontFamily="casual"
         android:gravity="center"
         android:text="My Requests"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
