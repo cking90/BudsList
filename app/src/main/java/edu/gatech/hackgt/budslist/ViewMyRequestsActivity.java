@@ -30,8 +30,7 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
         userEmail = extras.getString("user_email");
         model = Model.getInstance();
 
-        Log.d("pleasecoco", userEmail);
-        Log.d("pleasee", model.getRequests().get(0).getBuyer());
+
         outgoing = (Spinner)findViewById(R.id.spinner_outgoing);
         outgoing.setAdapter(new ArrayAdapter<Request>(this, android.R.layout.simple_spinner_item, model.getRequestsForBuyer(userEmail)));
 
