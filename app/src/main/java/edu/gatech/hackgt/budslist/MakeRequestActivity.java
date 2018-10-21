@@ -73,7 +73,7 @@ public class MakeRequestActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        Intent intent = new Intent(this, MyListingsActivity.class);
+        Intent intent = new Intent(this, SearchForBooksActivity.class);
         intent.putExtra("user_email", userEmail);
         startActivity(intent);
     }
