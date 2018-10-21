@@ -31,8 +31,7 @@ public class CreateListingActivity extends AppCompatActivity {
     Model model;
     String userEmail;
     private String urldata = "";
-    static String name;
-    static String author;
+    String[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +46,10 @@ public class CreateListingActivity extends AppCompatActivity {
     }
 
     public void setData(String name, String author) {
-        this.name = name;
-        this.author = author;
+        this.data[0] = name;
+        this.data[1] = author;
     }
-    public void onClickMakeListing(View view) {
+    public void onClickMakeListing(View view) throws InterruptedException {
         EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
         String isbn = isbn_box.getText().toString();
         EditText price_box = (EditText)findViewById(R.id.editText_price_id);
@@ -64,35 +63,49 @@ public class CreateListingActivity extends AppCompatActivity {
         EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
         String course_num = num_box.getText().toString();
 
+        class Scrape implements Runnable {
+            private volatile String data;
+
+            public String getData() { return data; }
+            @Override
+            public void run() {
+                String title ="blank";
+                String authorName = "blank";
+                try {
+                    Document doc = Jsoup.connect("https://isbndb.com/book/9780136019701").get();
+                    String body = doc.body().text();
+
+                    Pattern titlePattern = Pattern.compile("Full Title (.+?) ISBN");
+                    Matcher titleMatcher = titlePattern.matcher(body);
+                    if (titleMatcher.find()) {
+                        title = titleMatcher.group(1);
+                    }
+
+                    Pattern authorPattern = Pattern.compile("Authors (.+?) [Overview|Edition]");
+                    Matcher authorMatcher = authorPattern.matcher(body);
+                    if (authorMatcher.find()) {
+                        authorName = authorMatcher.group(1);
+                    }
+
+                    data = title + "###" + authorName;
+                } catch (Exception e) {
+                    title = "";
+                    authorName = "";
+                }
+            }
+        }
+
+
         String email = userEmail;
         User user = model.getUserByEmail(userEmail);
-        setUrldata("https://isbndb.com/book/9780136019701");
-        new Thread(new Runnable(){
-        @Override
-        public void run() {
-            try {
-                Document doc = Jsoup.connect(urldata).get();
-                String body = doc.body().text();
+        Scrape s = new Scrape();
+        Thread t = new Thread(s);
+        t.start();
+        t.join();
+        String resultString = s.getData();
+        String[] data = resultString.split("###");
 
-                Pattern titlePattern = Pattern.compile("Full Title (.+?) ISBN");
-                Matcher titleMatcher = titlePattern.matcher(body);
-                if (titleMatcher.find()) {
-                    name = titleMatcher.group(1);
-                }
-
-                Pattern authorPattern = Pattern.compile("Authors (.+?) [Overview|Edition]");
-                Matcher authorMatcher = authorPattern.matcher(body);
-                if (authorMatcher.find()) {
-                    author = authorMatcher.group(1);
-                }
-
-            } catch (Exception e) {
-
-            }
-
-        }
-        });
-        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
+        model.addBook(new Course(selected_department, course_num), user, data[0], price, isbn, data[1], selected_binding);
 
 
         Intent intent = new Intent(this, MyListingsActivity.class);
