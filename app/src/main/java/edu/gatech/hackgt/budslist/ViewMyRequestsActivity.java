@@ -46,8 +46,9 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ViewChosenRequestActivity.class);
             intent.putExtra("seller_email", userEmail);
             intent.putExtra("buyer_email", r.getBuyer());
-            intent.putExtra("book", r.getBook().toString());
+            intent.putExtra("book_isbn", r.getBook().getIsbn());
             intent.putExtra("date", r.getDate().toString());
+            intent.putExtra("price", r.getBook().getPrice());
             startActivity(intent);
         }
 
