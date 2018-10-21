@@ -131,6 +131,14 @@ public class Model {
         }
         return null;
     }
+    public Request getRequest_book_buyer(Book book, String buyerEmail) {
+        for(Request r: this.requests) {
+            if(r.getBook().equals(book) && r.getBuyer().equals(buyerEmail)) {
+                return r;
+            }
+        }
+        return null;
+    }
 
     public List<Book> getBooks() {
         return books;

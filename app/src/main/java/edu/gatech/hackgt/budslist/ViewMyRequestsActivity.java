@@ -1,10 +1,13 @@
 package edu.gatech.hackgt.budslist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import edu.gatech.hackgt.budslist.R;
 import edu.gatech.hackgt.budslist.models.Book;
@@ -34,5 +37,20 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
 
         incoming = (Spinner)findViewById(R.id.spinner_offers);
         incoming.setAdapter(new ArrayAdapter<Request>(this, android.R.layout.simple_spinner_item, model.getRequestsForSeller(userEmail)));
+    }
+    public void onClickViewDetails(View view) {
+        Request r = (Request) ((Spinner) findViewById(R.id.spinner_offers)).getSelectedItem();
+        if(r == null) {
+            Toast.makeText(this,"Cannot view details", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(this, ViewChosenRequestActivity.class);
+            intent.putExtra("seller_email", userEmail);
+            intent.putExtra("buyer_email", r.getBuyer());
+            intent.putExtra("book", r.getBook().toString());
+            intent.putExtra("date", r.getDate().toString());
+            startActivity(intent);
+        }
+
+
     }
 }

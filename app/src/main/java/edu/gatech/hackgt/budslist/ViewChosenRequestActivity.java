@@ -4,9 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class ViewChosenRequestActivity extends AppCompatActivity {
+
+    TextView textView_book;
+    TextView textView_buyer;
+    TextView textView_seller;
+    TextView textView_price;
+    TextView textView_date;
 
     String userEmail;
     @Override
