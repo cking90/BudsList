@@ -51,7 +51,11 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
             intent.putExtra("price", r.getBook().getPrice());
             startActivity(intent);
         }
+    }
 
-
+    public void onClickBack(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
     }
 }
