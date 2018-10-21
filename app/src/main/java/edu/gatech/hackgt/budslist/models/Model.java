@@ -17,6 +17,8 @@ public class Model {
 
     private final List<Book> books = new ArrayList<>();
 
+    public String currentUser;
+
     /**
      * Singleton pattern
      */
@@ -54,6 +56,13 @@ public class Model {
         return users.get(email);
     }
 
+    public String getCurrentUser() {
+        return this.currentUser;
+    }
+
+    public void setCurrentUser(String user) {
+        this.currentUser = user;
+    }
 
 
 
