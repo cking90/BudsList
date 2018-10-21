@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,7 +31,7 @@ import edu.gatech.hackgt.budslist.models.User;
 public class CreateListingActivity extends AppCompatActivity {
     Model model;
     String userEmail;
-    private String urldata = "";
+    private String urlData = "";
     String[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +46,12 @@ public class CreateListingActivity extends AppCompatActivity {
         binding.setAdapter(new ArrayAdapter<Binding>(this, android.R.layout.simple_spinner_item, Binding.values()));
     }
 
-    public void setData(String name, String author) {
-        this.data[0] = name;
-        this.data[1] = author;
-    }
     public void onClickMakeListing(View view) throws InterruptedException {
         EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
         String isbn = isbn_box.getText().toString();
+        isbn = isbn.trim();
+        isbn = isbn.replaceAll("-| ", "");
+        setUrldata(isbn);
         EditText price_box = (EditText)findViewById(R.id.editText_price_id);
         String price = price_box.getText().toString();
 
@@ -69,10 +69,10 @@ public class CreateListingActivity extends AppCompatActivity {
             public String getData() { return data; }
             @Override
             public void run() {
-                String title ="blank";
-                String authorName = "blank";
+                String title =" ";
+                String authorName = " ";
                 try {
-                    Document doc = Jsoup.connect("https://isbndb.com/book/9780136019701").get();
+                    Document doc = Jsoup.connect(urlData).get();
                     String body = doc.body().text();
 
                     Pattern titlePattern = Pattern.compile("Full Title (.+?) ISBN");
@@ -89,8 +89,7 @@ public class CreateListingActivity extends AppCompatActivity {
 
                     data = title + "###" + authorName;
                 } catch (Exception e) {
-                    title = "";
-                    authorName = "";
+                    data = "";
                 }
             }
         }
@@ -104,17 +103,21 @@ public class CreateListingActivity extends AppCompatActivity {
         t.join();
         String resultString = s.getData();
         String[] data = resultString.split("###");
+        if (resultString.length() == 5 || !isbn.matches("[0-9]{13}|[0-9]{10}")) {
+            Toast.makeText(this, "ISBN is invalid. Please enter valid ISBN", Toast.LENGTH_LONG).show();
+        }
+        else {
+            model.addBook(new Course(selected_department, course_num), user, data[0], price, isbn, data[1], selected_binding);
 
-        model.addBook(new Course(selected_department, course_num), user, data[0], price, isbn, data[1], selected_binding);
+            Intent intent = new Intent(this, MyListingsActivity.class);
+            intent.putExtra("user_email", userEmail);
+            startActivity(intent);
+        }
 
-
-        Intent intent = new Intent(this, MyListingsActivity.class);
-        intent.putExtra("user_email", userEmail);
-        startActivity(intent);
     }
 
     public void setUrldata(String url) {
-        this.urldata = url;
+        this.urlData = "https://isbndb.com/book/" + url;
     }
 
 //    public String[] getData() {
