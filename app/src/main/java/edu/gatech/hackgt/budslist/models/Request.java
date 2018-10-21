@@ -32,10 +32,7 @@ public class Request {
         return (((Request) other).buyer.equals(this.buyer)
                 && ((Request) other).book.equals(this.book));
     }
-    public String toStringOut() {
-        return book + " - " + book.getSeller().getName();
-    }
-    public String toStringOffer() {
-        return book + " - " + buyer;
+    public String toString() {
+        return book.toString();
     }
 }
