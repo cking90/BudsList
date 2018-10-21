@@ -33,9 +33,9 @@ public class Request {
                 && ((Request) other).book.equals(this.book));
     }
     public String toStringOut() {
-        return book + " - " + seller.getName();
+        return book + " - " + book.getSeller().getName();
     }
     public String toStringOffer() {
-        return book + " - " + buyer.getName();
+        return book + " - " + buyer;
     }
 }
