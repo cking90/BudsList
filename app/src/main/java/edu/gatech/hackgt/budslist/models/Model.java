@@ -68,20 +68,30 @@ public class Model {
 
 
 
-    public void addRequest(User buyer, User seller, Book book) {
-        requests.add(new Request(buyer, seller, book));
+    public void addRequest(String buyer, Book book) {
+        requests.add(new Request(buyer, book));
     }
     public void removeRequest(Request request) {
         requests.remove(request);
     }
-    public Request getRequest(String isbn, String sellerEmail, String buyerEmail) {
+    public List<Request> getRequestsForBuyer(String buyerEmail) {
+        List<Request> requests = new ArrayList<>();
         for (Request r : requests) {
-            if (r.getBook().getIsbn().equals(isbn) && r.getBuyer().getEmail().equals(buyerEmail)
-                    && r.getSeller().getEmail().equals(sellerEmail)) {
-                return r;
+            if (r.getBuyer().equals(buyerEmail)) {
+                requests.add(r);
             }
         }
-        return null;
+        return requests;
+    }
+
+    public List<Request> getRequestsForSeller(String sellerEmail) {
+        List<Request> requests = new ArrayList<>();
+        for (Request r : requests) {
+            if (r.getBook().getSeller().equals(sellerEmail)) {
+                requests.add(r);
+            }
+        }
+        return requests;
     }
 
     public void addBook(Course course, User seller, String name, String price, String isbn,
