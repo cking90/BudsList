@@ -89,7 +89,7 @@ public class Model {
     public List<Request> getRequestsForSeller(String sellerEmail) {
         List<Request> requests = new ArrayList<>();
         for (Request r : this.requests) {
-            if (r.getBook().getSeller().equals(sellerEmail)) {
+            if (r.getBook().getSeller().getEmail().equals(sellerEmail)) {
                 requests.add(r);
                 Log.d("Erm", "Rip");
             }
