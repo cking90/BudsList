@@ -68,16 +68,15 @@ public class Model {
 
 
 
-    public void addRequest(User buyer, User seller, Book book) {
-        requests.add(new Request(buyer, seller, book));
+    public void addRequest(String buyer, Book book) {
+        requests.add(new Request(buyer, book));
     }
     public void removeRequest(Request request) {
         requests.remove(request);
     }
-    public Request getRequest(String isbn, String sellerEmail, String buyerEmail) {
+    public Request getRequest(Book book, String buyerEmail) {
         for (Request r : requests) {
-            if (r.getBook().getIsbn().equals(isbn) && r.getBuyer().getEmail().equals(buyerEmail)
-                    && r.getSeller().getEmail().equals(sellerEmail)) {
+            if (r.getBook().equals(book) && r.getBuyer().equals(buyerEmail)) {
                 return r;
             }
         }
