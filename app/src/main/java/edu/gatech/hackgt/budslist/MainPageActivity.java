@@ -39,6 +39,12 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickViewRequests(View view){
+        Intent intent = new Intent(this, ViewMyRequestsActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
+    }
+
 
 
 }

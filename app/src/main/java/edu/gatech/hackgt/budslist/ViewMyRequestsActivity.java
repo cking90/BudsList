@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import edu.gatech.hackgt.budslist.R;
 import edu.gatech.hackgt.budslist.models.Book;
 import edu.gatech.hackgt.budslist.models.Model;
+import edu.gatech.hackgt.budslist.models.Request;
 
 public class ViewMyRequestsActivity extends AppCompatActivity {
     Model model;
@@ -25,10 +26,10 @@ public class ViewMyRequestsActivity extends AppCompatActivity {
         userEmail = extras.getString("user_email");
         model = Model.getInstance();
 
-        Spinner outgoing = (Spinner)findViewById(R.id.spinner_outgoing);
-        outgoing.setAdapter(new ArrayAdapter<Book>(this, android.R.layout.simple_spinner_item, ));
+        outgoing = (Spinner)findViewById(R.id.spinner_outgoing);
+        outgoing.setAdapter(new ArrayAdapter<Request>(this, android.R.layout.simple_spinner_item, model.getRequestsForBuyer(userEmail)));
 
-        Spinner userType = (Spinner)findViewById(R.id.myListingsSpinner);
-        userType.setAdapter(new ArrayAdapter<Book>(this, android.R.layout.simple_spinner_item, listings));
+        incoming = (Spinner)findViewById(R.id.spinner_offers);
+        incoming.setAdapter(new ArrayAdapter<Request>(this, android.R.layout.simple_spinner_item, model.getRequestsForSeller(userEmail)));
     }
 }

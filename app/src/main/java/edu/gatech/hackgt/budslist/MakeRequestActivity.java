@@ -82,5 +82,6 @@ public class MakeRequestActivity extends AppCompatActivity {
     public void onClickMakeRequest(View view) {
         model.addRequest(userEmail, book);
         Intent intent = new Intent(this, ViewMyRequestsActivity.class);
+        startActivity(intent);
     }
 }
