@@ -28,7 +28,8 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".CreateListingActivity" />
         <activity android:name=".MyListingsActivity" />
-        <activity android:name=".SearchForBooksActivity"></activity>
+        <activity android:name=".SearchForBooksActivity" />
+        <activity android:name=".MakeRequestActivity"></activity>
     </application>
 
 </manifest>

@@ -42,4 +42,7 @@ public class User {
         if (!(other instanceof User)) {return false; }
         return (((User) other).email.equals(this.email));
     }
+    public String toString() {
+        return name + "\n" + email + "\n" + phone_number;
+    }
 }
