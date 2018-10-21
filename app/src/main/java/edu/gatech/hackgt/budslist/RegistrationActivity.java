@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.gatech.hackgt.budslist.models.Model;
 
@@ -29,10 +30,16 @@ public class RegistrationActivity extends AppCompatActivity {
         EditText phn_box = (EditText)findViewById(R.id.editText_phone_id);
         String phoneNum = phn_box.getText().toString();
 
-        model.addUser(email, password, name, phoneNum);
+        if (model.getUsers().containsKey(email)) {
+            Toast.makeText(this, "This email is already taken.", Toast.LENGTH_LONG).show();
+        } else {
+            model.addUser(email, password, name, phoneNum);
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 
 }
