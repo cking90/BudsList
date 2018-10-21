@@ -31,7 +31,8 @@ public class CreateListingActivity extends AppCompatActivity {
     Model model;
     String userEmail;
     private String urldata = "";
-    String[] data;
+    static String name;
+    static String author;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +47,8 @@ public class CreateListingActivity extends AppCompatActivity {
     }
 
     public void setData(String name, String author) {
-        this.data[0] = name;
-        this.data[1] = author;
+        this.name = name;
+        this.author = author;
     }
     public void onClickMakeListing(View view) {
         EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
@@ -69,8 +70,6 @@ public class CreateListingActivity extends AppCompatActivity {
         new Thread(new Runnable(){
         @Override
         public void run() {
-            String title ="blank";
-            String authorName = "blank";
             try {
                 Document doc = Jsoup.connect(urldata).get();
                 String body = doc.body().text();
@@ -78,25 +77,22 @@ public class CreateListingActivity extends AppCompatActivity {
                 Pattern titlePattern = Pattern.compile("Full Title (.+?) ISBN");
                 Matcher titleMatcher = titlePattern.matcher(body);
                 if (titleMatcher.find()) {
-                    title = titleMatcher.group(1);
+                    name = titleMatcher.group(1);
                 }
 
                 Pattern authorPattern = Pattern.compile("Authors (.+?) [Overview|Edition]");
                 Matcher authorMatcher = authorPattern.matcher(body);
                 if (authorMatcher.find()) {
-                    authorName = authorMatcher.group(1);
+                    author = authorMatcher.group(1);
                 }
 
-                setData(title, authorName);
             } catch (Exception e) {
-                title = "";
-                authorName = "";
+
             }
 
         }
         });
-
-        model.addBook(new Course(selected_department, course_num), user, data[0], price, isbn, data[1], selected_binding);
+        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
 
 
         Intent intent = new Intent(this, MyListingsActivity.class);
