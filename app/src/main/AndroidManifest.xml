@@ -28,8 +28,10 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".CreateListingActivity" />
         <activity android:name=".MyListingsActivity" />
-        <activity android:name=".SearchForBooksActivity" />
-        <activity android:name=".MakeRequestActivity"></activity>
+        <activity android:name=".MakeRequestActivity"/>
+        <activity android:name=".SearchForBooksActivity"/>
+        <activity android:name=".ViewListingActivity">
+        </activity>
     </application>
 
 </manifest>
