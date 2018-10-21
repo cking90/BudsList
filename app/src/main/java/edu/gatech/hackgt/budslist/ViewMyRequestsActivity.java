@@ -1,11 +1,11 @@
-package edu.gatech.hackgt.budslist.models;
+package edu.gatech.hackgt.budslist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import edu.gatech.hackgt.budslist.R;
 
-public class ViewMyRequests extends AppCompatActivity {
+public class ViewMyRequestsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
