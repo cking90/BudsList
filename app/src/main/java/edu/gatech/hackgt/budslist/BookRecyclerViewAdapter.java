@@ -82,14 +82,17 @@ public class BookRecyclerViewAdapter extends
             bookAuthor = itemView.findViewById(R.id.bookAuthorTextView);
             bookIsbn = itemView.findViewById(R.id.bookISBNTextView);
             parentLayout = itemView.findViewById(R.id.bookAdapterLayout);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(view.getContext(), ViewSingleLocationActivity.class);
-//                    intent.putExtra("location_id", Integer.parseInt(locationID.getText().toString()));
-//                    view.getContext().startActivity(intent);
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), MakeRequestActivity.class);
+                    intent.putExtra("seller_email", bookSeller.getText().toString());
+                    intent.putExtra("book_price", bookPrice.getText().toString());
+                    intent.putExtra("book_isbn", bookIsbn.getText().toString());
+
+                    view.getContext().startActivity(intent);
+                }
+            });
 
         }
     }
