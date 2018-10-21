@@ -66,8 +66,6 @@ public class MyListingsActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, ViewListingActivity.class);
 
-
-
             intent.putExtra("seller_email", book.getSeller().getEmail());
             intent.putExtra("book_price", book.getPrice());
             intent.putExtra("book_isbn", book.getIsbn());

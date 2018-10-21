@@ -1,8 +1,6 @@
 package edu.gatech.hackgt.budslist.models;
 
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +78,6 @@ public class Model {
         for (Request r : this.requests) {
             if (r.getBuyer().equals(buyerEmail)) {
                 requests.add(r);
-                Log.d("Erm", "Rip");
             }
         }
         return requests;
@@ -91,7 +88,6 @@ public class Model {
         for (Request r : this.requests) {
             if (r.getBook().getSeller().getEmail().equals(sellerEmail)) {
                 requests.add(r);
-                Log.d("Erm", "Rip");
             }
         }
         return requests;
@@ -120,9 +116,7 @@ public class Model {
     }
 
     public Book getBookWith_seller_price_isbn(String sellerEmail, String price, String isbn) {
-        Log.d("Bruh2", "Enter model Method");
         for (Book b : this.getBooks()) {
-            Log.d("banana",b.getName());
             if (b.getSeller().getEmail().trim().equals(sellerEmail.trim())
                     && price.trim().equals(b.getPrice().trim())
                     && isbn.trim().equals(b.getIsbn().trim())) {
