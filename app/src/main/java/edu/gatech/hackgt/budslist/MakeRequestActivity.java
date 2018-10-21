@@ -34,16 +34,21 @@ public class MakeRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_make_request);
 
         Bundle extras = getIntent().getExtras();
+        sellerEmail = extras.getString("seller_email");
+        bookPrice = extras.getString("book_price");
+        bookISBN = extras.getString("book_isbn");
 
         model = Model.getInstance();
+
+        for (Book b : model.getBooks()) {
+            Log.d("sad", b.getAuthor());
+        }
 
         Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
 
         userEmail = model.getCurrentUser();
         Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));
-        sellerEmail = extras.getString("seller_email");
-        bookPrice = extras.getString("book_price");
-        bookISBN = extras.getString("book_isbn");
+
         book = model.getBookWith_seller_price_isbn(sellerEmail, bookPrice, bookISBN);
         Log.d("please",Boolean.toString(book == null));
         Log.d("Why",Boolean.toString(model.getBooks().isEmpty()));

@@ -105,7 +105,7 @@ public class Model {
     public Book getBookWith_seller_price_isbn(String sellerEmail, String price, String isbn) {
         Log.d("Bruh2", "Enter model Method");
         for (Book b : this.getBooks()) {
-            Log.d("Why","Bananas");
+            Log.d("banana",b.getName());
             if (b.getSeller().getEmail().trim().equals(sellerEmail.trim())
                     && price.trim().equals(b.getPrice().trim())
                     && isbn.trim().equals(b.getIsbn().trim())) {
