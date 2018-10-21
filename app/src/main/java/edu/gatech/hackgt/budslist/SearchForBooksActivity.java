@@ -42,7 +42,7 @@ public class SearchForBooksActivity extends AppCompatActivity {
             bookNames.add(book.getName());
             bookAuthors.add(book.getAuthor());
             bookPrices.add(book.getPrice());
-            bookSellers.add(book.getSeller().getName());
+            bookSellers.add(book.getSeller().getEmail());
             bookIsbns.add(book.getIsbn());
         }
         initRecyclerView();
