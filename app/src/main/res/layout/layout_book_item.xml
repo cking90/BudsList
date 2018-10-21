@@ -8,7 +8,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/bookNameTextView"
@@ -20,21 +22,21 @@
             android:fontFamily="casual"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.088"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/bookPriceTextView"
-            android:layout_width="58dp"
-            android:layout_height="25dp"
+            android:layout_width="102dp"
+            android:layout_height="38dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="casual"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.942"
+            app:layout_constraintHorizontal_bias="0.876"
             app:layout_constraintStart_toEndOf="@+id/bookNameTextView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,19 +52,23 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@+id/bookSellerTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.264"
+            app:layout_constraintHorizontal_bias="0.065"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bookNameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/bookNameTextView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/bookSellerTextView"
             android:layout_width="78dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="40dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="casual"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/bookAuthorTextView" />
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>
