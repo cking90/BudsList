@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,31 +39,49 @@ public class CreateListingActivity extends AppCompatActivity {
         Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
         binding.setAdapter(new ArrayAdapter<Binding>(this, android.R.layout.simple_spinner_item, Binding.values()));
     }
+    public void getData() {
+        Document doc;
+        try {
+            doc = Jsoup.connect("https://www.isbndb.com/book/9780136019701").get();
 
+            String text = doc.body().text();
+            Log.d("abc", "here");
+            String s = Integer.toString(text.length());
+            Log.d("length12345", s);
+            Log.d("stuff", text);
+
+        } catch (Throwable e) {
+            Log.d("OMG", "RIP");
+        }
+    }
     public void onClickMakeListing(View view) {
-        EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
-        String isbn = isbn_box.getText().toString();
-        EditText price_box = (EditText)findViewById(R.id.editText_price_id);
-        String price = price_box.getText().toString();
-
-        Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
-        Binding selected_binding = (Binding)binding.getSelectedItem();
-        Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
-        Department selected_department = (Department)department.getSelectedItem();
-
-        EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
-        String course_num = num_box.getText().toString();
-
-        String email = userEmail;
-        User user = model.getUserByEmail(userEmail);
-
-        //TODO - get name and author
-        String name =  "";
-        String author = "";
-        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
-        Intent intent = new Intent(this, MyListingsActivity.class);
-        intent.putExtra("user_email", userEmail);
-        startActivity(intent);
+          getData();
+//        EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
+//        String isbn = isbn_box.getText().toString();
+//        EditText price_box = (EditText)findViewById(R.id.editText_price_id);
+//        String price = price_box.getText().toString();
+//
+//        Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
+//        Binding selected_binding = (Binding)binding.getSelectedItem();
+//        Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
+//        Department selected_department = (Department)department.getSelectedItem();
+//
+//        EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
+//        String course_num = num_box.getText().toString();
+//
+//        String email = userEmail;
+//        User user = model.getUserByEmail(userEmail);
+//
+//        //TODO - get name and author
+//        String name =  "";
+//        String author = "";
+//        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
+//        List<String> list = new ArrayList<>();
+//        String s;
+//
+//        Intent intent = new Intent(this, MyListingsActivity.class);
+//        intent.putExtra("user_email", userEmail);
+//        startActivity(intent);
     }
 
 }
