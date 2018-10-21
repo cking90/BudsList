@@ -65,7 +65,9 @@ public class Book {
             return false;
         }
         Book that = (Book) other;
-        return this.isbn.equals(that.isbn);
+        return this.getSeller().equals(that.getSeller())
+                && this.getPrice().equals(that.getPrice())
+                && this.getIsbn().equals(that.getIsbn());
     }
 
     public String toString() {
