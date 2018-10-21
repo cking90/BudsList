@@ -39,7 +39,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
     public void initDefaultData() {
-        String[] names = {"Matt", "Saira", "Neha", "Neha"};
+        String[] names = {"Matt", "Saira", "Neha", "Charlie"};
         int number = 1234561234;
         for (String name : names) {
             String email = String.format("%s@gmail.com", name.toLowerCase());

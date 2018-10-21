@@ -37,9 +37,6 @@ public class ViewListingActivity extends AppCompatActivity {
         bookISBN = extras.getString("book_isbn");
 
         model = Model.getInstance();
-        for (Book b : model.getBooks()) {
-            Log.d("sad", b.getAuthor());
-        }
         book = model.getBookWith_seller_price_isbn(userEmail, bookPrice, bookISBN);
         Log.d("HALS", userEmail + bookPrice + bookISBN);
         bookTitleTextView = findViewById(R.id.textView_bookTitle_id);
