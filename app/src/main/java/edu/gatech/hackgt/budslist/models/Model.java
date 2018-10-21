@@ -1,6 +1,8 @@
 package edu.gatech.hackgt.budslist.models;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Model {
 
     private final List<Book> books = new ArrayList<>();
 
-    public String currentUser;
+    private String currentUser;
 
     /**
      * Singleton pattern
@@ -101,9 +103,12 @@ public class Model {
     }
 
     public Book getBookWith_seller_price_isbn(String sellerEmail, String price, String isbn) {
-        for (Book b : books) {
-            if (b.getSeller().getEmail().equals(sellerEmail)
-                    && price.equals(b.getPrice()) && isbn.equals(b.getIsbn())) {
+        Log.d("Bruh2", "Enter model Method");
+        for (Book b : this.getBooks()) {
+            Log.d("Why","Bananas");
+            if (b.getSeller().getEmail().trim().equals(sellerEmail.trim())
+                    && price.trim().equals(b.getPrice().trim())
+                    && isbn.trim().equals(b.getIsbn().trim())) {
                 return b;
             }
         }
@@ -114,9 +119,5 @@ public class Model {
         return books;
     }
 
-
-    public static void initDefaultData() {
-
-    }
 
 }
