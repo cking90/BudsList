@@ -1,6 +1,7 @@
 package edu.gatech.hackgt.budslist;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.gatech.hackgt.budslist.models.Binding;
 import edu.gatech.hackgt.budslist.models.Course;
@@ -27,6 +30,8 @@ import edu.gatech.hackgt.budslist.models.User;
 public class CreateListingActivity extends AppCompatActivity {
     Model model;
     String userEmail;
+    private String urldata = "";
+    String[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,49 +44,73 @@ public class CreateListingActivity extends AppCompatActivity {
         Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
         binding.setAdapter(new ArrayAdapter<Binding>(this, android.R.layout.simple_spinner_item, Binding.values()));
     }
-    public void getData() {
-        Document doc;
-        try {
-            doc = Jsoup.connect("https://www.isbndb.com/book/9780136019701").get();
 
-            String text = doc.body().text();
-            Log.d("abc", "here");
-            String s = Integer.toString(text.length());
-            Log.d("length12345", s);
-            Log.d("stuff", text);
-
-        } catch (Throwable e) {
-            Log.d("OMG", "RIP");
-        }
+    public void setData(String name, String author) {
+        this.data[0] = name;
+        this.data[1] = author;
     }
     public void onClickMakeListing(View view) {
-          getData();
-//        EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
-//        String isbn = isbn_box.getText().toString();
-//        EditText price_box = (EditText)findViewById(R.id.editText_price_id);
-//        String price = price_box.getText().toString();
-//
-//        Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
-//        Binding selected_binding = (Binding)binding.getSelectedItem();
-//        Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
-//        Department selected_department = (Department)department.getSelectedItem();
-//
-//        EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
-//        String course_num = num_box.getText().toString();
-//
-//        String email = userEmail;
-//        User user = model.getUserByEmail(userEmail);
-//
-//        //TODO - get name and author
-//        String name =  "";
-//        String author = "";
-//        model.addBook(new Course(selected_department, course_num), user, name, price, isbn, author, selected_binding);
-//        List<String> list = new ArrayList<>();
-//        String s;
-//
-//        Intent intent = new Intent(this, MyListingsActivity.class);
-//        intent.putExtra("user_email", userEmail);
-//        startActivity(intent);
+        EditText isbn_box = (EditText)findViewById(R.id.editText_isbn_id);
+        String isbn = isbn_box.getText().toString();
+        EditText price_box = (EditText)findViewById(R.id.editText_price_id);
+        String price = price_box.getText().toString();
+
+        Spinner binding = (Spinner)findViewById(R.id.spinner_binding_id);
+        Binding selected_binding = (Binding)binding.getSelectedItem();
+        Spinner department = (Spinner)findViewById(R.id.spinner_department_id);
+        Department selected_department = (Department)department.getSelectedItem();
+
+        EditText num_box = (EditText)findViewById(R.id.editText_courseNum_id);
+        String course_num = num_box.getText().toString();
+
+        String email = userEmail;
+        User user = model.getUserByEmail(userEmail);
+        setUrldata("https://isbndb.com/book/9780136019701");
+        new Thread(new Runnable(){
+        @Override
+        public void run() {
+            String title ="blank";
+            String authorName = "blank";
+            try {
+                Document doc = Jsoup.connect(urldata).get();
+                String body = doc.body().text();
+
+                Pattern titlePattern = Pattern.compile("Full Title (.+?) ISBN");
+                Matcher titleMatcher = titlePattern.matcher(body);
+                if (titleMatcher.find()) {
+                    title = titleMatcher.group(1);
+                }
+
+                Pattern authorPattern = Pattern.compile("Authors (.+?) [Overview|Edition]");
+                Matcher authorMatcher = authorPattern.matcher(body);
+                if (authorMatcher.find()) {
+                    authorName = authorMatcher.group(1);
+                }
+
+                setData(title, authorName);
+            } catch (Exception e) {
+                title = "";
+                authorName = "";
+            }
+
+        }
+        });
+
+        model.addBook(new Course(selected_department, course_num), user, data[0], price, isbn, data[1], selected_binding);
+
+
+        Intent intent = new Intent(this, MyListingsActivity.class);
+        intent.putExtra("user_email", userEmail);
+        startActivity(intent);
     }
+
+    public void setUrldata(String url) {
+        this.urldata = url;
+    }
+
+//    public String[] getData() {
+//        return data;
+//    }
+
 
 }
