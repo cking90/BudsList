@@ -31,8 +31,9 @@
         <activity android:name=".MyListingsActivity" />
         <activity android:name=".MakeRequestActivity" />
         <activity android:name=".SearchForBooksActivity" />
-        <activity android:name=".ViewListingActivity"></activity>
-        <activity android:name=".ViewMyRequestsActivity"></activity>
+        <activity android:name=".ViewListingActivity" />
+        <activity android:name=".ViewMyRequestsActivity" />
+        <activity android:name=".ViewChosenRequestActivity"></activity>
     </application>
 
 </manifest>
