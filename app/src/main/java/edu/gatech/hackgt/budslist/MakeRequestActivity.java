@@ -77,4 +77,10 @@ public class MakeRequestActivity extends AppCompatActivity {
         intent.putExtra("user_email", userEmail);
         startActivity(intent);
     }
+
+    //TODO: Verify that existing Request does not already exist.
+    public void onClickMakeRequest(View view) {
+        model.addRequest(userEmail, book);
+        Intent intent = new Intent(this, ViewMyRequestsActivity.class);
+    }
 }
