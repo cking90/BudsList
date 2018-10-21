@@ -33,6 +33,6 @@ public class Request {
                 && ((Request) other).book.equals(this.book));
     }
     public String toString() {
-        return book + " - " + book.getSeller().getName() + buyer;
+        return book.toString();
     }
 }
